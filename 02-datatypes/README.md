@@ -17,8 +17,233 @@
 - Create arrays and access values in them.
 - Iterate over and manipulate values in an array.
 
-> Note: Last class, we worked on data types, arrays, helper methods, and array iterations. Check with students to make sure that everyone is comfortable with the materials covered in the last class before introducing the new material.
 
+---
+
+#### Part 2: Adding Elements to the Arrays
+
+Use bracket notation to add values to the one of the arrays; use the `.push()` method for the other.
+
+```javascript
+goods[2] = "juice"
+
+quantity.push(8)
+```
+
+>Note: Explain to the students the differences in adding (or setting) array values. What are the pros/cons of each approach?
+
+#### Part 3: Accessing Elements from Arrays and Concatenating Them With Strings
+
+Now it's time to access various combinations of the two arrays’ elements and concatenate their returned values.
+
+```javascript
+  => 'Today, I consumed ' + quantity[0] + ' cups of ' + goods[0]
+  => 'I am going to have ' + quantity[1] + ' cups of ' + goods[1] + ' tonight'
+```
+
+---
+<a name="codealong5"></a>
+## Array Helper Methods (25 min)
+
+Arrays come with a number of methods. Here's a list of some popular helpers:
+
+> Note: You might want to demonstrate a few of these.
+
+- `a.toString()` - Returns a string with the `toString()` of each element separated by commas.
+
+- `a.pop()` - Removes and returns the last item.
+
+- `a.push(item1, ..., itemN)` - Adds one or more items to the end.
+
+- `a.reverse()` - Reverses the array.
+
+- `a.shift()` - Removes and returns the first item.
+
+- `a.unshift([item])` - Prepends items to the start of the array.
+
+You will likely not remember _every_ method. Explore the [full documentation for array methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) and other helper methods provided for particular objects.
+
+
+In this exercise, students will utilize their knowledge of array helper methods in order to decode a secret message.
+
+#### Part 1: Array Creation and the `.push()` Method
+
+```javascript
+var message = []
+
+message.push(8)
+=> 1
+message.push('r', 'e', 'b', 'm', 'u')
+=> 6
+message.push('n', 's', 'i', 'A', 'G', 'K')
+=> 12
+
+message
+=> [ 8, 'r', 'e', 'b', 'm', 'u', 'n', 's', 'i', 'A', 'G', 'K' ]
+
+```
+
+#### Part 2: `.pop()`, `.shift()`, and `.unshift()`
+
+```javascript
+message.pop()
+=> 'K'
+
+message.shift()
+=> 8
+
+message.unshift(1)
+=> 11
+```
+
+#### Part 3: Array Reversal Using `.reverse()`
+```javascript
+message.reverse()
+=> [ 'G', 'A', 'i', 's', 'n', 'u', 'm', 'b', 'e', 'r', 1 ]
+```
+
+> Note: Discuss how the `.reverse()` method mutates the array structure.
+
+#### Part 4: Array `.join()`
+
+The `.join()` method joins all elements of an array into a single string.
+
+Citation: [Mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join)
+
+__Note:__ The `.join()` method accepts an optional argument, __the separator__, which becomes a string that separates the array values. If no argument is supplied to `.join()`, the separator defaults to a comma.
+
+```javascript
+message.join()
+=> 'G,A,i,s,n,u,m,b,e,r,1'
+
+message.join(' ')
+=> 'G A i s n u m b e r 1'
+
+```
+---
+<a name="codealong6"></a>
+## Iterating through an Array (25 min)
+
+Iterating through the elements of an array, one at a time, is a very common and useful practice in programming.
+
+We can use a `for` loop to iterate over the elements of an array like this:
+
+```javascript
+var teams = ['Bruins', 'Cal Bears', 'Ravens', 'Ducks'];
+for (var i = 0; i < teams.length; i++) {
+	console.log(teams[i]);
+}
+```
+
+How is the following code different from the one above?
+```javascript
+var teams = ['Bruins', 'Cal Bears', 'Ravens', 'Ducks'];
+for (var i = 2; i < teams.length; i++) {
+	console.log(teams[i]);
+}
+```
+
+JavaScript arrays have several advanced _iterator methods_.
+
+Many of these methods require a function to be supplied as an argument, and the code in which you write the function will be applied to _each_ item in the array, individually.
+
+For example, we can use the `forEach` method instead of a `for` loop to iterate the elements:
+
+```javascript
+var teams = ['Bruins', 'Cal Bears', 'Ravens', 'Ducks'];
+teams.forEach(function(el) {
+    console.log(el);
+});
+```
+
+This function would return:
+
+```javascript
+Bruins
+Cal Bears
+Ravens
+Ducks
+undefined
+```
+
+Do you notice how much clearer this syntax is than that of the `for` loop?
+
+Here are some other iterator methods for you to research and practice with:
+
+- `Array.filter()`
+- `Array.map()`
+
+
+#### Part 1: Evens and Odds
+
+Create an array--`evens`--and populate it with the even numbers 2 - 10. Create an array--`odds`--and populate it with the odd numbers 1 - 9.
+
+```javascript
+var evens = []
+evens.push(2,4,6,8,10)
+=> 5
+
+var odds = []
+odds.push(1,3,5,7,9)
+=> 5
+```
+
+#### Part 2: `Array.filter( )`
+
+The `.filter()` method creates a new array with all elements that pass the test implemented by the provided function.
+[[Source](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)]
+
+__Note:__ `.filter()` does not mutate the array it is acting upon; while it does return a new array of filtered elements, this new array must be assigned to a new variable or returned to another function.
+
+```javascript
+evens.filter(function (num) {
+  return num > 5
+})
+=> [6, 8, 10]
+
+evens
+=>[ 2, 4, 6, 8, 10 ]
+
+var bigNums = evens.filter(function (num) {
+  return num > 5
+})
+=> undefined
+
+bigNums
+=> [6, 8, 10]
+
+var smallNums = odds.filter(function (num) {
+  return num < 5
+})
+=> undefined
+smallNums
+=> [1, 3]
+```
+
+#### Part 3: ‘Array.map( )’
+
+The `.map()` method creates a new array with the results of calling a provided function on every element in this array.
+[[Source](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)]
+
+__Note:__ `.map()` does not mutate the array it is acting upon; while it does return a new array of filtered elements, this new array must be assigned to a new variable or returned to another function.
+
+```javascript
+var timesFive = evens.map(function (num) {
+  return num * 5
+})
+=> undefined
+
+timesFive
+=> [10, 20, 30, 40, 50]
+
+var timesTen = odds.map(function (num) {
+  return num * 10
+})
+=> undefined
+
+timesTen
+=> [10, 30, 50, 70, 90]
+```
 ---
 
 ## Conditional Statements
@@ -114,8 +339,6 @@ In this case, the `switch` statement compares `food` to each of the cases (`pear
 The default clause is optional.
 
 ## Switch Statement Usage
-
->To illustrate why programmers implement a switch statement—as opposed to if/else logic—compare these two approaches with the students.
 
 #### Part 1: Construct If/Else Conditionals
 
@@ -322,3 +545,18 @@ Another way of iterating over an array added with ECMAScript 5 is [`forEach()`](
 });
 ```
 ---
+
+
+#### Further Resources
+
+* Feel free to read more from [Mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) about JavaScript fundamentals.
+
+* [Mozilla](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt)
+
+* [if - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else)
+
+* [while - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/while)
+
+* [for - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for)
+
+* [w3schools](https://www.w3schools.com/js/default.asp)

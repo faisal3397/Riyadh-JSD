@@ -78,7 +78,9 @@ var lyrics
 
 
 
-/*
+
+
+/* EXTRA WORK
 **2: Random Address Generator**
 - Write a script that can generate random addresses
 - As a first step, create arrays that contain dummy data for each of the following: street number, street name, city name, state name and zip code
