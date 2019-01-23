@@ -14,3 +14,24 @@ General Assembly's JavaScript Development course is made up of 20 lessons that a
 | **Unit 2: The Browser and APIs** | Lessons 7 - 12 | Feedr: Introduced at the end of Lesson 11 and during Lesson 12 Lab Time| Feedr: Due before start of Lesson 15 |
 | **Unit 3: Persisting Data and Advanced Topics**| Lessons 13 - 16 |Final Project: Introduced at end of Lesson 14| |
 | **Unit 4: Building and Deploying Your App**| Lessons 17 - 18 ||Final Project: Due during Lesson 19|
+
+
+
+
+#### Assignments and Projects
+
+In order to pass this course General Assembly students must:
+
+1.	Complete and submit 80% of all course homework assignments.
+
+	*	Students will receive feedback from instructors on their assignments within 2 - 4 days.
+
+2. Attend 80% of the scheduled classes
+
+#### Grading, Hosting and Using GitHub in the Classroom
+
+We'll use GitHub for student-facing materials, homework submission, final project hosting, feedback and grading.
+
+* Students will learn Git and GitHub early on in lesson 1.
+
+* In order to host their final projects online, students will use GitHub pages. Unit 4 will cover the process of getting their site up and running on GitHub pages or Heroku.

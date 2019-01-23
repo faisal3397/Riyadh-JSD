@@ -1,0 +1,15 @@
+{
+  "name": "javascript-loops-conditions",
+  "version": "1.0.0",
+  "description": "javascript",
+  "main": "main.js",
+  "scripts": {
+    "test": "npm start",
+    "start" : "node main.js"
+  },
+  "author": "Ebere Iweala",
+  "license": "ISC",
+  "dependencies": {
+    "readline-sync": "^1.4.9"
+  }
+}
