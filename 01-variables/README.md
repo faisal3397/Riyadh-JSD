@@ -143,3 +143,132 @@ We use operators to work with data in JavaScript. The standard [arithmetic opera
 6 * 2
 => 12
 ```
+
+<a name="codealong1"></a>
+## Comparison Operators
+
+[Comparisons](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators) in JavaScript can be made using `<`, `>`, `<=` and `>=`. These can be used for both strings and numbers. This can be either beneficial or frustrating to a developer, since most languages do not implicitly convert strings to numbers the way that JavaScript does.
+
+```javascript
+"A" > "a"
+//=> false
+
+"b" > "a"
+//=> true
+
+12 > "12"
+//=> false
+
+12 >= "12"
+//=> true
+```
+
+#### Double-Equals Equality Operator `==`
+
+Equality is a bit more complex. JavaScript provides two ways to verify equality.
+
+When you verify equality using double-equals `==`, JavaScript performs much of the "type coercion" in the background. As we mentioned above, if the operands have a different type (e.g., the number `1` and the string `"1"`), JavaScript will attempt to change the type of both operands in order to check if they are equal. This means that expressions will often return equal more easily than if we were stricter about what things were equivalent. Some examples:
+
+```javascript
+"dog" == "dog";
+//=> true
+
+1 == true;
+//=> true
+```
+
+#### Triple-Equals Equality Operator `===`
+
+To avoid type coercion and to measure equality more strictly, **use the triple-equals operator**. Because `===` more truly measures actual equality, we should always use `===` instead of `==`, which is a legacy of the early days of JavaScript when people thought it might be useful to have an operator that does type coercion before checking equality, but that's pretty much never a good idea as it defeats the whole purpose of having data types.
+
+> **Note:** "Sameness" and "equality" have various definitions, which can make the differentiation somewhat fuzzy. They can also differ by programming language. Because you'll often be measuring whether two things are equal, you should carefully investigate the way this works.
+
+Some examples:
+
+```javascript
+1 === true;
+//=> false
+
+true === true;
+//=> true
+
+"hello" === "hello"
+//=> true
+```
+
+However, there are some situations when `===` does not behave as we expect it to, for example when empty objects or arrays are involved:
+
+```javascript
+{} === {}
+//=> Uncaught SyntaxError: Unexpected token ===
+
+[] === []
+//=> false
+
+[1,7] === [1,7]
+//=> false
+```
+
+**Explanation**
+
+The examples in the second set fail equality tests because both **object literals** and **arrays** are objects, not just "primitive" values like strings, numbers, and Booleans. Objects and arrays are complex collections of values, and when we refer to them, we're actually referencing where they live in memory. That's why we call them "reference types." Strings and numbers are "value types."
+
+What does this all mean? When we attempt to compare two objects or arrays with `===`, JavaScript doesn't care if they look like similar collections. It only compares whether or not they are the exact same object in memory. In each case above, checking for equality is actually comparing two objects that are in two different places in memory. They're not exactly "the same."
+
+#### != and !==
+
+There are also `!=` and `!==` operators, which are the negative versions of `==` and `===`. And again, we should always use `!==` and `===`, because they are more precise than `!=` and `==`.
+
+---
+
+<a name="codealong2"></a>
+
+## Truthy and Falsey (15 min)
+
+All of the following become false when converted to a Boolean:
+
+- `false`
+- `0`
+- `""` (empty string)
+- `NaN`
+- `null`
+- `undefined`
+
+All other values become true when converted to a Boolean.
+
+Do not confuse the primitive Boolean values `true` and `false` with the true and false values of the Boolean object. For example:
+
+```javascript
+var b = new Boolean(false);
+if (b) { console.log("true") }
+//=> true
+```
+
+There is a simple way of verifying the 'truthyness' or 'falseyness' of a value. When you add `!` in front of a value, the returned value will be the inverse of the value in a Boolean. So if you add two `!` then you'll get the Boolean value of the original one:
+
+```javascript
+!!1
+//=> true
+
+!!0
+//=> false
+
+!!-1
+//=> true
+
+!![]
+//=> true
+
+!!{}
+//=> true
+
+!!null
+//=> false
+
+!!""
+//=> false
+```
+
+*Find more on truthy and falsey values [here](http://adripofjavascript.com/blog/drips/truthy-and-falsy-values-in-javascript.html)*
+
+---
